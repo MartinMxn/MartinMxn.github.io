@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>No.1 of Top 10 Java Design Pattern | MartinM Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第一篇文章分享Java里 个人认为最常用、最重要的十个设计模式中的第一个 单例1. SingletonLevel：HardHard 原因很简单，看似最简单最基础的设计模式却拥有最多的变种Singleton Patternrestricts the instantiation of a class and ensures that only one instance of the class exi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No.1 of Top 10 Java Design Pattern">
+<meta property="og:url" content="http://yoursite.com/2020/05/24/Java-Design-Pattern/index.html">
+<meta property="og:site_name" content="MartinM Blog">
+<meta property="og:description" content="第一篇文章分享Java里 个人认为最常用、最重要的十个设计模式中的第一个 单例1. SingletonLevel：HardHard 原因很简单，看似最简单最基础的设计模式却拥有最多的变种Singleton Patternrestricts the instantiation of a class and ensures that only one instance of the class exi">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-25T06:41:47.000Z">
+<meta property="article:modified_time" content="2020-05-25T07:13:43.035Z">
+<meta property="article:author" content="Martin Meng">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="OOD">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="MartinM Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">MartinM Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java-Design-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/24/Java-Design-Pattern/" class="article-date">
+  <time datetime="2020-05-25T06:41:47.000Z" itemprop="datePublished">2020-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      No.1 of Top 10 Java Design Pattern
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一篇文章分享Java里-个人认为最常用、最重要的十个设计模式中的第一个-单例"><a href="#第一篇文章分享Java里-个人认为最常用、最重要的十个设计模式中的第一个-单例" class="headerlink" title="第一篇文章分享Java里 个人认为最常用、最重要的十个设计模式中的第一个 单例"></a>第一篇文章分享Java里 个人认为最常用、最重要的十个设计模式中的第一个 <strong>单例</strong></h2><h3 id="1-Singleton"><a href="#1-Singleton" class="headerlink" title="1. Singleton"></a>1. Singleton</h3><h3 id="Level：Hard"><a href="#Level：Hard" class="headerlink" title="Level：Hard"></a>Level：Hard</h3><h4 id="Hard-原因很简单，看似最简单最基础的设计模式却拥有最多的变种"><a href="#Hard-原因很简单，看似最简单最基础的设计模式却拥有最多的变种" class="headerlink" title="Hard 原因很简单，看似最简单最基础的设计模式却拥有最多的变种"></a>Hard 原因很简单，看似最简单最基础的设计模式却拥有最多的变种</h4><h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="Singleton-Pattern"><a href="#Singleton-Pattern" class="headerlink" title="Singleton Pattern"></a>Singleton Pattern</h4><p>restricts the instantiation of a class and ensures that only one instance of the class exists in the Java virtual machine.</p>
+<h4 id="My-thought"><a href="#My-thought" class="headerlink" title="My thought:"></a>My thought:</h4><ul>
+<li><ol>
+<li>make only one instance in jvm -&gt; static constructor</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>also need to restrict instantiation from other</li>
+</ol>
+</li>
+<li>-&gt; private constructor</li>
+<li><ol start="3">
+<li>provide a global access point to get the instance</li>
+</ol>
+</li>
+<li>-&gt; public getMethod (private variable based on encapsulation principle)</li>
+<li><ol start="4">
+<li>final? The final modifier allows the Java compiler and runtime</li>
+</ol>
+</li>
+<li>to make good optimization and thread-safety decisions.</li>
+</ul>
+<h4 id="1-Eager-initialization"><a href="#1-Eager-initialization" class="headerlink" title="1. Eager initialization"></a>1. Eager initialization</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class EagerInit &#123;</span><br><span class="line">    private static final EagerInit instance &#x3D; new EagerInit();</span><br><span class="line"></span><br><span class="line">    private EagerInit() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static EagerInit getInstance() &#123;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Static-block-initialization"><a href="#2-Static-block-initialization" class="headerlink" title="2. Static block initialization"></a>2. Static block initialization</h4><p>avoid create instance more than one time and good for error handle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class StaticBlockSingleton &#123;</span><br><span class="line">    private static StaticBlockSingleton instance;</span><br><span class="line"></span><br><span class="line">    private StaticBlockSingleton() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            instance &#x3D; new StaticBlockSingleton();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            throw new RuntimeException(&quot;Exception occurred in creating singleton instance&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static StaticBlockSingleton getInstance() &#123;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Eager-and-static-block-both-create-the-instance-of-singleton"><a href="#Eager-and-static-block-both-create-the-instance-of-singleton" class="headerlink" title="Eager and static block both create the instance of singleton"></a>Eager and static block both create the instance of singleton</h4><h4 id="even-if-the-class-is-not-being-used-so-far-not-lazy-initialization"><a href="#even-if-the-class-is-not-being-used-so-far-not-lazy-initialization" class="headerlink" title="even if the class is not being used so far (not lazy initialization)"></a>even if the class is not being used so far (not lazy initialization)</h4><h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><h4 id="3-Lazy-Initialization"><a href="#3-Lazy-Initialization" class="headerlink" title="3. Lazy Initialization"></a>3. Lazy Initialization</h4><p>create instance when we call get method</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class LazyInitializedSingleton &#123;</span><br><span class="line"></span><br><span class="line">    private static LazyInitializedSingleton instance;</span><br><span class="line"></span><br><span class="line">    private LazyInitializedSingleton() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static LazyInitializedSingleton getInstance() &#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            instance &#x3D; new LazyInitializedSingleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-Thread-safe-Singleton"><a href="#4-Thread-safe-Singleton" class="headerlink" title="4. Thread safe Singleton"></a>4. Thread safe Singleton</h4><p>only with ‘synchronized’ key word, only one thread can execute this method at a time.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class ThreadSageSingleton &#123;</span><br><span class="line">    private static ThreadSageSingleton instance;</span><br><span class="line"></span><br><span class="line">    private ThreadSageSingleton() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static synchronized ThreadSageSingleton getInstance() &#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            instance &#x3D; new ThreadSageSingleton();</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; above make sure the thread-safe but doesn&#39;t have good performance</span><br><span class="line">    &#x2F;&#x2F; because of the cost associated with the synchronized method</span><br><span class="line">    &#x2F;&#x2F; we need it only for the first few threads who might create the separate instances</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; so the double check could solve this ↓</span><br><span class="line">    public static synchronized ThreadSageSingleton getInstanceWithCondition() &#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            synchronized (ThreadSageSingleton.class) &#123;</span><br><span class="line">                if (instance &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    instance &#x3D; new ThreadSageSingleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-Reflection-will-destroy-singleton"><a href="#5-Reflection-will-destroy-singleton" class="headerlink" title="5. Reflection will destroy singleton"></a>5. Reflection will destroy singleton</h4><p>since it create a new instance by the reflect constructor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class ReflectionSingletonTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        EagerInit instanceOne &#x3D; EagerInit.getInstance();</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            Constructor[] constructors &#x3D; EagerInit.class.getDeclaredConstructors();</span><br><span class="line">            for (Constructor constructor : constructors) &#123;</span><br><span class="line">                &#x2F;&#x2F;Below code will destroy the singleton pattern</span><br><span class="line">                constructor.setAccessible(true);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        EagerInit instanceTwo &#x3D; null;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            Constructor[] constructors &#x3D; EagerInit.class.getDeclaredConstructors();</span><br><span class="line">            for (Constructor constructor : constructors) &#123;</span><br><span class="line">                &#x2F;&#x2F;Below code will destroy the singleton pattern</span><br><span class="line">                constructor.setAccessible(true);</span><br><span class="line">                instanceTwo &#x3D; (EagerInit) constructor.newInstance();</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        System.out.println(instanceOne.hashCode());</span><br><span class="line">        System.out.println(instanceTwo.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-The-best-practice-of-singleton-in-Java-is-enum"><a href="#6-The-best-practice-of-singleton-in-Java-is-enum" class="headerlink" title="6. The best practice of singleton in Java is enum"></a>6. The best practice of singleton in Java is enum</h3><p>which has all the features we need,<br>like instantiated only once, globally accessible<br>but drawback is not support lazy load</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum EnumSingleton &#123;</span><br><span class="line">    INSTANCE;</span><br><span class="line">    public static void dosth() &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-Serialized-Singleton"><a href="#7-Serialized-Singleton" class="headerlink" title="7. Serialized Singleton"></a>7. Serialized Singleton</h3><p>sometime, in distributed systems, we need implement serializable interface in singleton<br>so we could store its state in file system and future retrieve</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class SerializedSingleton implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private static final String serialVersionUID &#x3D; UUID.randomUUID().toString();</span><br><span class="line"></span><br><span class="line">    private static SerializedSingleton instance;</span><br><span class="line"></span><br><span class="line">    private SerializedSingleton() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    public static SerializedSingleton getInstance() &#123;</span><br><span class="line">        if (instance &#x3D;&#x3D; null) &#123;</span><br><span class="line">            synchronized (SerializedSingleton.class) &#123;</span><br><span class="line">                if (instance &#x3D;&#x3D; null) &#123;</span><br><span class="line">                    instance &#x3D; new SerializedSingleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    protected Object readResolve() &#123;</span><br><span class="line">        return getInstance();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Test-Class"><a href="#Test-Class" class="headerlink" title="Test Class"></a>Test Class</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class SingletonSerializedTest &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException, ClassNotFoundException &#123;</span><br><span class="line">        SerializedSingleton instanceOne &#x3D; SerializedSingleton.getInstance();</span><br><span class="line">        ObjectOutput out &#x3D; new ObjectOutputStream(new FileOutputStream(&quot;recordFile.ser&quot;));</span><br><span class="line">        out.writeObject(instanceOne);</span><br><span class="line">        out.close();</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; deserialize</span><br><span class="line">        ObjectInput in &#x3D; new ObjectInputStream(new FileInputStream(&quot;recordFile.ser&quot;));</span><br><span class="line">        SerializedSingleton instanceTwo &#x3D; (SerializedSingleton)in.readObject();</span><br><span class="line">        in.close();</span><br><span class="line"></span><br><span class="line">        System.out.println(instanceOne.hashCode());</span><br><span class="line">        System.out.println(instanceTwo.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>##</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/24/Java-Design-Pattern/" data-id="ckam4qri90000822r6dpdhpvm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOD/" rel="tag">OOD</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/24/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OOD/" rel="tag">OOD</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/OOD/" style="font-size: 10px;">OOD</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/24/Java-Design-Pattern/">No.1 of Top 10 Java Design Pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/24/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Martin Meng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
