@@ -64,6 +64,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Deploy-you-personal-blog-in-10-min-with-Hexo-AWS-Route53-GithubPage-05-2020" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/25/Deploy-you-personal-blog-in-10-min-with-Hexo-AWS-Route53-GithubPage-05-2020/" class="article-date">
+  <time datetime="2020-05-25T09:16:57.000Z" itemprop="datePublished">2020-05-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/25/Deploy-you-personal-blog-in-10-min-with-Hexo-AWS-Route53-GithubPage-05-2020/">十分钟搭建个人博客(Hexo+GithubPage+AWS Route53) [05.2020]</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="疫情期间保持学习节奏，决定利用博客来记录和总结学习的点滴进度"><a href="#疫情期间保持学习节奏，决定利用博客来记录和总结学习的点滴进度" class="headerlink" title="疫情期间保持学习节奏，决定利用博客来记录和总结学习的点滴进度"></a>疫情期间保持学习节奏，决定利用博客来记录和总结学习的点滴进度</h3><h3 id="在网上看到了Hexo是个很不错的静态页面生成框架，之前浏览其他大佬的页面时候也看到过这个名字，想拿来试试"><a href="#在网上看到了Hexo是个很不错的静态页面生成框架，之前浏览其他大佬的页面时候也看到过这个名字，想拿来试试" class="headerlink" title="在网上看到了Hexo是个很不错的静态页面生成框架，之前浏览其他大佬的页面时候也看到过这个名字，想拿来试试"></a>在网上看到了Hexo是个很不错的静态页面生成框架，之前浏览其他大佬的页面时候也看到过这个名字，想拿来试试</h3><h3 id="但是鉴于能Google到的教程是在太古老，导致写Blog5分钟，部署搭环境两小时"><a href="#但是鉴于能Google到的教程是在太古老，导致写Blog5分钟，部署搭环境两小时" class="headerlink" title="但是鉴于能Google到的教程是在太古老，导致写Blog5分钟，部署搭环境两小时"></a>但是鉴于能Google到的教程是在太古老，导致写Blog5分钟，部署搭环境两小时</h3><h3 id="决定用个人博客的第一篇就来share，在时至今日-2020年-5月-用Hexo搭建博客中遇到的坑与注意事项"><a href="#决定用个人博客的第一篇就来share，在时至今日-2020年-5月-用Hexo搭建博客中遇到的坑与注意事项" class="headerlink" title="决定用个人博客的第一篇就来share，在时至今日[2020年 5月]用Hexo搭建博客中遇到的坑与注意事项"></a>决定用个人博客的第一篇就来share，在时至今日[2020年 5月]用Hexo搭建博客中遇到的坑与注意事项</h3><h3 id="希望能够帮到看到这篇文章的你"><a href="#希望能够帮到看到这篇文章的你" class="headerlink" title="希望能够帮到看到这篇文章的你"></a>希望能够帮到看到这篇文章的你</h3><br/>
+
+<h4 id="大致流程："><a href="#大致流程：" class="headerlink" title="大致流程："></a>大致流程：</h4><p>Hexo环境配置 -&gt; Hexo本地创建静态页面 -&gt; 本地起服务测试<br>链接Github仓库，利用Github Page测试线上页面<br>个性化域名连接(以AWS Route 53为例)</p>
+<br/>
+<br/>
+
+<h2 id="1-Hexo前提环境配置"><a href="#1-Hexo前提环境配置" class="headerlink" title="1. Hexo前提环境配置"></a>1. Hexo前提环境配置</h2><h4 id="有一点npm使用经历或基础的同学应该已经安装好了-可以略过到2"><a href="#有一点npm使用经历或基础的同学应该已经安装好了-可以略过到2" class="headerlink" title="有一点npm使用经历或基础的同学应该已经安装好了 可以略过到2"></a>有一点npm使用经历或基础的同学应该已经安装好了 可以略过到2</h4><p>(1) 安装Git<br><br/><br>Mac: 使用 <a href="https://brew.sh/" target="_blank" rel="noopener">Homebrew</a> 或 <a href="https://www.macports.org/" target="_blank" rel="noopener">MacPorts</a> 比较方便<br>Windows: 下载并安装 <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a><br>Linux (Ubuntu, Debian)：sudo apt-get install git-core<br>Linux (Fedora, Red Hat, CentOS)：sudo yum install git-core<br><br/></p>
+<p>(2) 安装Node.js<br><br/><br>Mac：依然是 <a href="https://brew.sh/" target="_blank" rel="noopener">Homebrew</a> 或 <a href="https://www.macports.org/" target="_blank" rel="noopener">MacPorts</a> 方便些。<br>Windows：通过 <a href="https://github.com/jasongin/nvs/" target="_blank" rel="noopener">nvs</a>（推荐）或者<a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">nvm</a> 安装。<br>Linux（DEB/RPM-based）：从 NodeSource 安装。<br><br/></p>
+<h2 id="2-Hexo安装"><a href="#2-Hexo安装" class="headerlink" title="2. Hexo安装"></a>2. Hexo安装</h2><h4 id="还不够熟悉npm操作的同学可以全局安装"><a href="#还不够熟悉npm操作的同学可以全局安装" class="headerlink" title="还不够熟悉npm操作的同学可以全局安装"></a>还不够熟悉npm操作的同学可以全局安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>有可能会permission deny, 请在命令前加sudo 然后输入账户密码</p>
+<br/>
+
+<h4 id="足够熟悉的同学可以局部安装hexo"><a href="#足够熟悉的同学可以局部安装hexo" class="headerlink" title="足够熟悉的同学可以局部安装hexo"></a>足够熟悉的同学可以局部安装hexo</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo</span><br></pre></td></tr></table></figure>
+<p>别忘了先npm init</p>
+<h2 id="3-Github创建仓库与Github-Page"><a href="#3-Github创建仓库与Github-Page" class="headerlink" title="3. Github创建仓库与Github Page"></a>3. Github创建仓库与Github Page</h2><p>如果还没有Github账户的同学请先 <a href="https://github.com/" target="_blank" rel="noopener">注册</a>,用户名尽量全部小写<br><br/></p>
+<h4 id="1-新建项目"><a href="#1-新建项目" class="headerlink" title="(1) 新建项目"></a>(1) 新建项目</h4><p>！注意：项目名必须以你的<strong>用户名</strong>.github.io命名<br>如:username.github.io<br>原因是因为Github page生成网页会根据你的repo项目命名来生成，如果不是用户名.github.io的格式url格式会变 从而导致链接你的自定义域名失败<br><br/></p>
+<h4 id="2-Github-Page"><a href="#2-Github-Page" class="headerlink" title="(2) Github Page"></a>(2) Github Page</h4><p>通过创建初始readme.md或者后面push上去初始的hexo文件后<br>点击仓库的Setting页面，向下拉会有<strong>GitHub Pages</strong>一栏。[ 明天补图 ]<br>下方会有刚才的<strong>用户名.github.io</strong>显示，稍等一会儿即可点击页面看到GithubPage初始页面 [ 明天补图 ]<br><br/></p>
+<h2 id="3-Hexo创建本地项目"><a href="#3-Hexo创建本地项目" class="headerlink" title="3. Hexo创建本地项目"></a>3. Hexo创建本地项目</h2><p>推荐在一个新的干净文件夹下存放Hexo生成的本地项目文件和博客目录比如’/Users/xxx/Projects/HexoBlog’<br>在之前步骤安装成功的标志是<code>hexo -v</code>或者<code>npx hexo -v</code>能看到Hexo所需相关依赖的版本号<br><br/></p>
+<p>确认安装成功后用<code>hexo init</code>在<strong>一个空文件夹下</strong>创建初始文件<br>然后使用<code>npm i</code>安装npm的依赖包 (依然会有权限问题 老样子sudo解决)<br><br/></p>
+<p>然后使用<code>hexo g</code>/<code>npx hexo g</code>生成静态页面<br>注：这个命令每次要生成新post后都会需要<br>再用<code>hexo s</code>/<code>npx hexo s</code>启动本地服务<br>打开 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 就可以看到初始博客效果了 [ 明天补图 ]</p>
+<h2 id="3点多了-太累了-猪猪也睡着了-明天再写了😌-我猜猪猪今晚应该睡得很舒服嘿嘿😝"><a href="#3点多了-太累了-猪猪也睡着了-明天再写了😌-我猜猪猪今晚应该睡得很舒服嘿嘿😝" class="headerlink" title="3点多了 太累了 猪猪也睡着了 明天再写了😌 我猜猪猪今晚应该睡得很舒服嘿嘿😝"></a>3点多了 太累了 猪猪也睡着了 明天再写了😌 我猜猪猪今晚应该睡得很舒服嘿嘿😝</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/25/Deploy-you-personal-blog-in-10-min-with-Hexo-AWS-Route53-GithubPage-05-2020/" data-id="ckama4mfg0000vz2r58rg1v7l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java-Design-Pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/24/Java-Design-Pattern/" class="article-date">
@@ -190,6 +247,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/05/25/Deploy-you-personal-blog-in-10-min-with-Hexo-AWS-Route53-GithubPage-05-2020/">十分钟搭建个人博客(Hexo+GithubPage+AWS Route53) [05.2020]</a>
+          </li>
         
           <li>
             <a href="/2020/05/24/Java-Design-Pattern/">No.1 of Top 10 Java Design Pattern</a>
