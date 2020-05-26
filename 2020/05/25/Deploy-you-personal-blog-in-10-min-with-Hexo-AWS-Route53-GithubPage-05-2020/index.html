@@ -439,7 +439,7 @@
                 <hr>
 <h2 id="十分钟搭建个人博客-Hexo-GithubPage-AWS-Route53-05-2020"><a href="#十分钟搭建个人博客-Hexo-GithubPage-AWS-Route53-05-2020" class="headerlink" title="十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020]"></a>十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020]</h2><br/>
 
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><font size=3>疫情期间保持学习节奏，决定利用博客来记录和总结学习的点滴进度。<br>在网上看到了Hexo是个很不错的静态页面生成框架，之前浏览其他大佬的页面时候也看到过这个名字，想拿来试试<br>但是鉴于能Google到的教程是在太古老，导致写Blog5分钟，部署搭环境两小时<br>决定用个人博客的第一篇来share，在时至今日(2020年 5月)用Hexo搭建博客中踩过的坑与注意事项<br>希望能够帮助到看到这篇文章各位 </font></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><font size=2>疫情期间保持学习节奏，决定利用博客来记录和总结学习的点滴进度。<br>在网上看到了Hexo是个很不错的静态页面生成框架，之前浏览其他大佬的页面时候也看到过这个名字，想拿来试试<br>但是鉴于能Google到的教程是在太古老，导致写Blog5分钟，部署搭环境两小时<br>决定用个人博客的第一篇来share，在时至今日(2020年 5月)用Hexo搭建博客中踩过的坑与注意事项<br>希望能够帮助到看到这篇文章各位 </font></p>
 <br/>
 
 <h3 id="大致流程："><a href="#大致流程：" class="headerlink" title="大致流程："></a>大致流程：</h3><p>(1) Hexo环境配置 -&gt; Hexo本地创建静态页面 -&gt; 本地起服务测试<br>(2) 链接Github仓库，利用Github Page测试线上页面<br>(3) 个性化域名连接(以AWS Route 53为例)</p>
@@ -453,9 +453,12 @@
 
 <p>足够熟悉的同学可以局部安装hexo<br><code>npm install hexo</code><br>别忘了先npm init</p>
 <h3 id="3-Github创建仓库与Github-Page"><a href="#3-Github创建仓库与Github-Page" class="headerlink" title="3. Github创建仓库与Github Page"></a>3. Github创建仓库与Github Page</h3><p>如果还没有Github账户的同学请先 <a href="https://github.com/" target="_blank" rel="noopener">注册</a>,用户名尽量全部小写<br><br/></p>
-<p><strong>(1) 新建项目</strong><br>！注意：项目名必须以你的<strong>用户名</strong>.github.io命名<br>如:username.github.io<br>原因是因为Github page生成网页会根据你的repo项目命名来生成，如果不是用户名.github.io的格式url格式会变 从而导致链接你的自定义域名失败<br><br/></p>
+<p><strong>(1) 新建项目</strong><br>！注意：项目名必须以你的<strong>用户名</strong>.github.io命名<br>如:username.github.io<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526reponame.png" alt=""><br>格式按图片上的yourusername改成你的username即可<br><br/></p>
+<p>原因是因为Github page生成网页会根据你的repo项目命名来生成，如果不是用户名.github.io的格式url格式会变 从而导致链接你的自定义域名失败<br><br/></p>
 <p><strong>(2) Github Page</strong><br>通过创建初始readme.md或者后面push上去初始的hexo文件后<br>点击仓库的Setting页面<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526setting.png" alt=""></p>
-<p>向下拉会有<strong>GitHub Pages</strong>一栏。[ 明天补图 ]<br>下方会有刚才的<strong>用户名.github.io</strong>显示，稍等一会儿即可点击页面看到GithubPage初始页面<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526GithubPage.png" alt=""><br><br/></p>
+<p>向下拉会有<strong>GitHub Pages</strong>一栏。<br>下方会有刚才的<strong>用户名.github.io</strong>显示，<br>点击选择<strong>master分支</strong>，主题可选可不选<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526githubpagemaster.png" alt=""><br>稍等一会儿等到链接处告诉你ready变绿<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526githubpagesuccess.png" alt=""><br>即可点击页面看到GithubPage初始页面<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526githubpagedemo.png" alt=""></p>
+<br/>
+
 <h3 id="4-Hexo创建本地项目"><a href="#4-Hexo创建本地项目" class="headerlink" title="4. Hexo创建本地项目"></a>4. Hexo创建本地项目</h3><p>推荐在一个新的干净文件夹下存放Hexo生成的本地项目文件和博客目录比如’/Users/xxx/Projects/HexoBlog’<br>在之前步骤安装成功的标志是<code>hexo -v</code>或者<code>npx hexo -v</code>能看到Hexo所需相关依赖的版本号<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526HexoV.png" alt=""><br><br/></p>
 <p>确认安装成功后用<code>hexo init</code>在<strong>一个空文件夹下</strong>创建初始文件<br>然后使用<code>npm i</code>安装npm的依赖包 (依然会有权限问题 老样子sudo解决)<br><br/></p>
 <p>然后使用<code>hexo g</code>/<code>npx hexo g</code>生成静态页面<br>注：这个命令每次要生成新post后都会需要<br>再用<code>hexo s</code>/<code>npx hexo s</code>启动本地服务<br>打开 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 就可以看到初始博客效果了<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526hexoinit.png" alt=""></p>
