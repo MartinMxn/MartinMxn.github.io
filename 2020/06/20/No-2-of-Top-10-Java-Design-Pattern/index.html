@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020], MartinM Blog">
+    <meta name="keywords" content="No.2 of Top 10 Java Design Pattern, MartinM Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020] | MartinM Blog</title>
+    <title>No.2 of Top 10 Java Design Pattern | MartinM Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -286,12 +286,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020]</h1>
+                    <h1 class="description center-align post-title">No.2 of Top 10 Java Design Pattern</h1>
                 </div>
             </div>
         </div>
@@ -408,14 +408,27 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Blog/">
-                                <span class="chip bg-color">Blog</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/OOD/">
+                                <span class="chip bg-color">OOD</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Design-Pattern/" class="post-category">
+                                Design Pattern
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -424,7 +437,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-05-25
+                    2020-06-20
                 </div>
                 
 
@@ -440,42 +453,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<h2 id="十分钟搭建个人博客-Hexo-GithubPage-AWS-Route53-05-2020"><a href="#十分钟搭建个人博客-Hexo-GithubPage-AWS-Route53-05-2020" class="headerlink" title="十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020]"></a>十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020]</h2><br/>
+                <h3 id="本次介绍第二大重要设计模式"><a href="#本次介绍第二大重要设计模式" class="headerlink" title="本次介绍第二大重要设计模式"></a>本次介绍第二大重要设计模式</h3><h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><p><strong><font size=4> 代理Proxy </font></strong><br><font size=3> Level：Medium </font><br>代理模式的原理理解起来是Easy难度,但是实际应用有所难度所以为Medium.<br><br/></p>
+<p><strong>Proxy Pattern</strong><br>Provide a placeholder for another object to control access to it.<br><br/></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface CommandExecutor &#123;</span><br><span class="line">    void runCommand(String cmd) throws  Exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><font size=2>疫情期间保持学习节奏，决定利用博客来记录和总结学习的点滴进度。<br>在网上看到了Hexo是个很不错的静态页面生成框架，之前浏览其他大佬的页面时候也看到过这个名字，想拿来试试<br>但是鉴于能Google到的教程是在太古老，导致写Blog5分钟，部署搭环境两小时<br>决定用个人博客的第一篇来share，在时至今日(2020年 5月)用Hexo搭建博客中踩过的坑与注意事项<br>希望能够帮助到看到这篇文章各位 </font></p>
-<br/>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class CommandExecutorImpl implements CommandExecutor&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void runCommand(String cmd) throws Exception &#123;</span><br><span class="line">        &#x2F;&#x2F;some heavy implementation</span><br><span class="line">        Runtime.getRuntime().exec(cmd);</span><br><span class="line"></span><br><span class="line">        System.out.printf(&quot;&#39;%s&#39; command executed\n&quot;, cmd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="大致流程："><a href="#大致流程：" class="headerlink" title="大致流程："></a>大致流程：</h3><p>(1) Hexo环境配置 -&gt; Hexo本地创建静态页面 -&gt; 本地起服务测试<br>(2) 链接Github仓库，利用Github Page测试线上页面<br>(3) 个性化域名连接(以AWS Route 53为例)</p>
-<br/>
-<br/>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class CommandExecutorProxy implements CommandExecutor &#123;</span><br><span class="line"></span><br><span class="line">    private boolean isAdmin;</span><br><span class="line"></span><br><span class="line">    private final CommandExecutor executor;</span><br><span class="line"></span><br><span class="line">    public CommandExecutorProxy(String user, String pwd) &#123;</span><br><span class="line">        if (&quot;Martin&quot;.equalsIgnoreCase(user) &amp;&amp; &quot;123&quot;.equalsIgnoreCase(pwd)) &#123;</span><br><span class="line">            isAdmin &#x3D; true;</span><br><span class="line">        &#125;</span><br><span class="line">        executor &#x3D; new CommandExecutorImpl();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void runCommand(String cmd) throws Exception &#123;</span><br><span class="line">        if (isAdmin) &#123;</span><br><span class="line">            executor.runCommand(cmd);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (cmd.trim().startsWith(&quot;rm&quot;)) &#123;</span><br><span class="line">                throw new Exception(&quot;you don&#39;t have permission to remove file&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                executor.runCommand(cmd);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="1-Hexo前提环境配置"><a href="#1-Hexo前提环境配置" class="headerlink" title="1. Hexo前提环境配置"></a>1. Hexo前提环境配置</h3><p>有npm基础的同学应该已经安装好了 可以略过到2<br><strong>(1) 安装Git</strong><br><br/><br>Mac: 使用 <a href="https://brew.sh/" target="_blank" rel="noopener">Homebrew</a> 或 <a href="https://www.macports.org/" target="_blank" rel="noopener">MacPorts</a> 比较方便<br>Windows: 下载并安装 <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a><br>Linux (Ubuntu, Debian)：sudo apt-get install git-core<br>Linux (Fedora, Red Hat, CentOS)：sudo yum install git-core<br><br/></p>
-<p><strong>(2) 安装Node.js</strong><br><br/><br>Mac：依然是 <a href="https://brew.sh/" target="_blank" rel="noopener">Homebrew</a> 或 <a href="https://www.macports.org/" target="_blank" rel="noopener">MacPorts</a> 方便些。<br>Windows：通过 <a href="https://github.com/jasongin/nvs/" target="_blank" rel="noopener">nvs</a>（推荐）或者<a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">nvm</a> 安装。<br>Linux（DEB/RPM-based）：从 NodeSource 安装。<br><br/></p>
-<h3 id="2-Hexo安装"><a href="#2-Hexo安装" class="headerlink" title="2. Hexo安装"></a>2. Hexo安装</h3><p>还不够熟悉npm操作的同学可以全局安装<br><code>npm install -g hexo-cli</code><br>有可能会permission deny, 请在命令前加sudo 然后输入账户密码即可</p>
-<br/>
-
-<p>足够熟悉的同学可以局部安装hexo<br><code>npm install hexo</code><br><br/></p>
-<h3 id="3-Github创建仓库与Github-Page"><a href="#3-Github创建仓库与Github-Page" class="headerlink" title="3. Github创建仓库与Github Page"></a>3. Github创建仓库与Github Page</h3><p>如果还没有Github账户的同学请先 <a href="https://github.com/" target="_blank" rel="noopener">注册</a>,用户名尽量全部小写<br><br/></p>
-<p><strong>(1) 新建项目</strong><br><strong>！注意:</strong>项目名必须以你的<strong>用户名</strong>.github.io命名<br>如:username.github.io<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526reponame.png" alt=""><br>格式按图片上的yourusername改成你的username即可<br><br/></p>
-<p>原因是因为Github page生成网页会根据你的repo项目命名来生成，如果不是用户名.github.io的格式url格式会变 从而导致链接你的自定义域名失败<br><br/></p>
-<p><strong>(2) Github Page</strong><br>通过创建初始readme.md或者后面push上去初始的hexo文件后<br>点击仓库的Setting页面<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526setting.png" alt=""></p>
-<p>向下拉会有<strong>GitHub Pages</strong>一栏。<br>下方会有刚才的<strong>用户名.github.io</strong>显示，<br>点击选择<strong>master分支</strong>，主题可选可不选<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526githubpagemaster.png" alt=""><br>稍等一会儿等到链接处告诉你ready变绿<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526githubpagesuccess.png" alt=""><br>即可点击页面看到GithubPage初始页面<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526githubpagedemogreen.png" alt=""><br><strong>！注意:</strong>这里如果在新建repo时没点新建README文件，选择主题后commit一个changes会显示对应主题的index页面，如果点了readme则可能是一个白色页面只有一个title<br><strong>这两种情况都可以</strong><br>初学同学推荐不选择主题 不然后面还需要处理conflict<br><br/></p>
-<h3 id="4-Hexo创建本地项目"><a href="#4-Hexo创建本地项目" class="headerlink" title="4. Hexo创建本地项目"></a>4. Hexo创建本地项目</h3><p>推荐在一个新的干净文件夹下存放Hexo生成的本地项目文件和博客目录比如’/Users/xxx/Projects/HexoBlog’<br>在之前步骤安装成功的标志是<code>hexo -v</code>或者<code>npx hexo -v</code>能看到Hexo所需相关依赖的版本号<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526HexoV.png" alt=""><br><br/></p>
-<p>确认安装成功后用<code>hexo init</code>在<strong>一个空文件夹下</strong>创建初始文件<br>然后使用<code>npm i</code>安装npm的依赖包 (依然会有权限问题 老样子sudo解决)<br><br/></p>
-<p>然后使用<code>hexo g</code>/<code>npx hexo g</code>生成静态页面<br>注：这个命令每次要生成新post后都会需要<br>再用<code>hexo s</code>/<code>npx hexo s</code>启动本地服务<br>打开 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 就可以看到初始博客效果了<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526hexoinit.png" alt=""><br><br/></p>
-<h3 id="5-链接Github仓库与本地Hexo-repo"><a href="#5-链接Github仓库与本地Hexo-repo" class="headerlink" title="5.链接Github仓库与本地Hexo repo"></a>5.链接Github仓库与本地Hexo repo</h3><p><strong>有git基础的同学可略过本部分</strong><br><strong>(1) 在本地的刚建好的hexo文件目录下初始git</strong><br><code>git init</code>  <code>git add .</code> <code>git commit -m &quot;init&quot;</code><br><br/></p>
-<p><strong>(2) 然后链接远程仓库</strong><br><code>git remote add orign</code> + 你的仓库url 比如我用来测试的<br><code>git remote add origin https://github.com/Martin7374/martin7374.github.io.git</code><br><br/></p>
-<p><strong>(3)之后拉取并处理冲突</strong><br>如果选择主题则需要在pull加上–allow-unrelated-histories<br><code>git pull origin master --allow-unrelated-histories</code><br>如果之前没选择应该直接<br><code>git pull origin master</code><br>就可以<br><br/></p>
-<p>然后再民工三连提交本地hexo代码到github<br><code>git init</code>  <code>git add .</code> <code>git commit -m &quot;init&quot;</code><br>此时稍等一下再打开你的username.github.io应该能看到本地hexo的页面部署到了云端！<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0526hexoinit.png" alt=""><br><br/></p>
-<h3 id="6-自定义域名链接-以AWS-Route-53为例"><a href="#6-自定义域名链接-以AWS-Route-53为例" class="headerlink" title="6.自定义域名链接(以AWS Route 53为例)"></a>6.自定义域名链接(以AWS Route 53为例)</h3><p>此时如果觉得github.io结尾域名已经满足需求可以到此为止装逼去了<br>如果觉得还不够可以看完这最后一步</p>
-<p>进入你用的云平台域名管理页面 链接你的github page域名 国内同学阿里云，xx云原理类似 可以寻找对应教程 不必完全类比<br><br/></p>
-<p>这里以AWS Route 53为例<br>购买好你想要的域名后打开Route53<br>点击Hosted zones<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0528awsr53.png" alt=""><br><br/></p>
-<p>点击你的域名<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0528awsr53hz.png" alt=""><br><br/></p>
-<p>之后创建新record set<br>先创建A类型 配置如下<br>四个用来指向Github page的IP地址为：<br>185.199.108.153<br>185.199.109.153<br>185.199.110.153<br>185.199.111.153<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0528awsrecorda.png" alt=""><br><br/></p>
-<p>再创建第二个A类型 配置如下<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0528awsrecordb.png" alt=""><br><br/></p>
-<p>最后一步完成之后别忘了回到Github Page，在项目的setting里面<br>加上你购买的域名 我这里没有www<br><img src="https://github.com/MartinMxn/MartinMxn.github.io/raw/master/medias/blogimages/0528finalgithubpage.png" alt=""><br><br/></p>
-<p><strong>稍等几分钟 打开购买域名应该能够正常访问了</strong><br><strong>至此教程圆满结果 如有疑问和修改建议 欢迎邮件联系 <a href="mailto:mxn19960424@gmail.com">mxn19960424@gmail.com</a></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Demo &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; correct user name with wrong password</span><br><span class="line">        CommandExecutor executor &#x3D; new CommandExecutorProxy(&quot;Martin&quot;, &quot;wrong pwd&quot;);</span><br><span class="line">        try &#123;</span><br><span class="line">            &#x2F;&#x2F; allowed cmd</span><br><span class="line">            executor.runCommand(&quot;ls -ltr&quot;);</span><br><span class="line">            &#x2F;&#x2F; not allowed cmd</span><br><span class="line">            executor.runCommand(&quot;rm -rf sth&quot;);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
             </div>
             <hr/>
@@ -511,8 +497,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Blog/">
-                                    <span class="chip bg-color">Blog</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/OOD/">
+                                    <span class="chip bg-color">OOD</span>
                                 </a>
                             
                         </div>
@@ -680,9 +670,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2020/06/20/No-2-of-Top-10-Java-Design-Pattern/">
                     <div class="card-image">
@@ -701,9 +692,9 @@ Proxy PatternProvide a placeholder for a
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -716,6 +707,7 @@ Proxy PatternProvide a placeholder for a
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -738,36 +730,32 @@ Proxy PatternProvide a placeholder for a
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/24/Java-Design-Pattern/">
+                <a href="/2020/05/25/Deploy-you-personal-blog-in-10-min-with-Hexo-AWS-Route53-GithubPage-05-2020/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="No.1 of Top 10 Java Design Pattern">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020]">
                         
-                        <span class="card-title">No.1 of Top 10 Java Design Pattern</span>
+                        <span class="card-title">十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020]</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一篇文章分享Java里 个人认为最常用、最重要的十个设计模式中的第一个:单例
+                            
+十分钟搭建个人博客(Hexo + GithubPage + AWS Route53) [05.2020]
 
- 单例Singleton  Level：Hard Hard 原因很简单，看似最简单最基础的设计模式却拥有最多的变种
-Singleton Patternrest
+前言疫情期间保持学习节奏，决定利用博客来记录和总结学习的点滴进度。在网上看到了Hexo是个很不错的静态页面生成框架，之前浏览其他大
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-25
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Design-Pattern/" class="post-category">
-                                    Design Pattern
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Martin Meng
                             
                         </span>
                     </div>
@@ -775,12 +763,8 @@ Singleton Patternrest
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/OOD/">
-                        <span class="chip bg-color">OOD</span>
+                    <a href="/tags/Blog/">
+                        <span class="chip bg-color">Blog</span>
                     </a>
                     
                 </div>
